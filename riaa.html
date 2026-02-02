@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>For Nandan 💖</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #ffb6c1, #ffd6e8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Segoe UI', sans-serif;
+      overflow: hidden;
+    }
+
+    .container {
+      text-align: center;
+      color: white;
+      z-index: 2;
+    }
+
+    h1 {
+      font-size: 2.6rem;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.2);
+    }
+
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      opacity: 0.9;
+    }
+
+    button {
+      padding: 15px 35px;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      margin: 10px;
+      transition: 0.3s;
+    }
+
+    #yesBtn {
+      background: #ff4d6d;
+      color: white;
+    }
+
+    #yesBtn:hover {
+      transform: scale(1.1);
+      background: #e63956;
+    }
+
+    #noBtn {
+      position: absolute;
+      background: #888;
+      color: white;
+    }
+
+    .success {
+      display: none;
+      text-align: center;
+      color: white;
+      z-index: 2;
+      animation: fadeIn 1s ease;
+    }
+
+    .success h2 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    .success p {
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+    }
+
+    video {
+      width: 80%;
+      max-width: 600px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+
+    .heart {
+      position: absolute;
+      color: #ff4d6d;
+      font-size: 20px;
+      animation: floatUp 6s linear infinite;
+      opacity: 0.6;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(100vh); opacity: 0; }
+      20% { opacity: 1; }
+      100% { transform: translateY(-10vh); opacity: 0; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container" id="questionBox">
+    <h1>Nandan, will you be my Valentine? 💖</h1>
+    <p>(Think carefully… one option is very smart 😌)</p>
+    <button id="yesBtn">Yes ❤️</button>
+    <button id="noBtn">No 🙈</button>
+  </div>
+
+  <div class="success" id="successBox">
+    <h2>Yaaayy! Thankyou!! 💘🎉</h2>
+    <p>I knew it was always you 🥹❤️</p>
+    <video autoplay controls>
+      <source src="riaa.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById("noBtn");
+    const yesBtn = document.getElementById("yesBtn");
+    const questionBox = document.getElementById("questionBox");
+    const successBox = document.getElementById("successBox");
+
+    noBtn.addEventListener("mouseover", () => {
+      const x = Math.random() * (window.innerWidth - noBtn.clientWidth);
+      const y = Math.random() * (window.innerHeight - noBtn.clientHeight);
+      noBtn.style.left = `${x}px`;
+      noBtn.style.top = `${y}px`;
+    });
+
+    yesBtn.addEventListener("click", () => {
+      questionBox.style.display = "none";
+      successBox.style.display = "block";
+      createHearts();
+    });
+
+    function createHearts() {
+      for (let i = 0; i < 25; i++) {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "💖";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = (Math.random() * 3 + 4) + "s";
+        document.body.appendChild(heart);
+
+        setTimeout(() => heart.remove(), 6000);
+      }
+    }
+  </script>
+
+</body>
+</html>
